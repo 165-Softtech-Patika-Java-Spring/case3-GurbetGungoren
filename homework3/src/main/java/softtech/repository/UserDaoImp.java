@@ -38,14 +38,20 @@ public class UserDaoImp implements UserDao {
         return userEntity
                .orElseThrow(()->new SofttechDataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND));
     }
-
     @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
-
     @Override
     public UserEntity updateUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
+    }
+    @Override
+    public Boolean isPhoneNumberExists(Long phoneNumber){
+        return userRepository.existsByPhoneNumber(phoneNumber);
+    }
+    @Override
+    public Boolean isUserNameExists(String userName){
+        return userRepository.existsByUserName(userName);
     }
 }

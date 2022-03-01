@@ -12,4 +12,6 @@ public interface UserDao{
     UserEntity getUserByName(String userName);
     void deleteUserById(Long id);
     UserEntity updateUser(UserEntity userEntity);
+    Boolean isPhoneNumberExists(Long phoneNumber);
+    Boolean isUserNameExists(String userName);
 }

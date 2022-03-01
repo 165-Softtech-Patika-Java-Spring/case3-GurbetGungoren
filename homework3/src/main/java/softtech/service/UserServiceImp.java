@@ -22,9 +22,15 @@ public class UserServiceImp implements UserService {
     private final UserConverter userConverter;
     @Override
     public UserResponse createUser(UserDto userDto) {
-
-        UserEntity user =userDao.createUser(userConverter.convertToUser(userDto));
-        return userConverter.convertToUserResponse(user);
+        if(Boolean.TRUE.equals(userDao.isPhoneNumberExists(userDto.getPhoneNumber()))){
+            throw new SofttechValidationException(ExceptionType.PHONE_NUMBER_ALREADY_EXIST);
+        }
+        else if (Boolean.TRUE.equals(userDao.isUserNameExists(userDto.getUserName()))){
+            throw new SofttechValidationException(ExceptionType.USER_NAME_ALREADY_EXIST);
+        }
+        else{
+            UserEntity user =userDao.createUser(userConverter.convertToUser(userDto));
+            return userConverter.convertToUserResponse(user);}
     }
 
     @Override

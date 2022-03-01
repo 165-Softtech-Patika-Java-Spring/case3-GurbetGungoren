@@ -25,7 +25,7 @@ public class ProductDaoImp implements ProductDao{
 
     @Override
     public ProductEntity getProductById(Long id) {
-        return productRepository.findById(id).get(); // to do handler exception
+        return productRepository.findById(id).get();
     }
 
     @Override
