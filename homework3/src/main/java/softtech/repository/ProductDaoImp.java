@@ -13,7 +13,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductDaoImp implements ProductDao{
     private  final ProductRepository productRepository;
-
     @Override
     public ProductEntity createProduct(ProductEntity productEntity) {
         return productRepository.save(productEntity);
@@ -22,22 +21,18 @@ public class ProductDaoImp implements ProductDao{
     public List<ProductEntity> getAllProducts(){
         return productRepository.findAll();
     }
-
     @Override
     public ProductEntity getProductById(Long id) {
         return productRepository.findById(id).get();
     }
-
     @Override
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
     }
-
     @Override
     public ProductEntity updateProductPrice(Long id,BigDecimal newPrice) {
         ProductEntity productEntity = productRepository.findById(id).get();
         productEntity.setProductPrice(newPrice);
         return productRepository.save(productEntity);
     }
-
 }

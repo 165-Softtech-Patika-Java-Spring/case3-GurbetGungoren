@@ -20,7 +20,7 @@ public class CommentController {
     public ResponseEntity getAllCommentByUserId(@PathVariable Long userId){
         return ResponseEntity.ok(commentService.getAllCommentByUserId(userId));
     }
-    @GetMapping("/api/v1/userscomment/{productId}")
+    @GetMapping("/api/v1/productcomments/{productId}")
     public ResponseEntity getAllCommentByProductId(@PathVariable Long productId){
         return ResponseEntity.ok(commentService.getAllCommentByProductId(productId));
     }

@@ -11,5 +11,4 @@ public interface ProductDao {
     ProductEntity getProductById(Long id);
     void deleteProductById(Long id);
     ProductEntity updateProductPrice(Long id, BigDecimal newPrice);
-
 }
